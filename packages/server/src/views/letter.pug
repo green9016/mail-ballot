@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+.container
+  if state
+    ul.nav.nav-tabs
+      each implementedState in implementedStates
+        li.nav-item
+          if state === implementedState
+            a.nav-link(href="/letter/" + implementedState).active= implementedState
+          else
+            a.nav-link(href="/letter/" + implementedState)= implementedState
+
+  .mt-4
+    select.form-control(onchange="location = '/letter/" + state + "' + '/' + this.value")
+      each k in keys
+        if key === k
+          option(value=k selected)= k
+        else
+          option(value=k)= k
+            
+  .mt-4 !{letter}

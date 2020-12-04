@@ -1,0 +1,25 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "client": "yarn workspace @vbm/client",
+    "common": "yarn workspace @vbm/common",
+    "server": "yarn workspace @vbm/server",
+    "clean": "mv node_modules /tmp/ && rm -rf /tmp/node_modules&",
+    "clobber": "yarn clean && rm -f yarn.lock",
+    "gulp": "lerna run gulp --",
+    "test": "lerna run gulp -- test && yarn server gulp test --e2e",
+    "build": "lerna run gulp -- build --env production",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
+}
